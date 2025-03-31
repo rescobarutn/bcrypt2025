@@ -22,14 +22,27 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     
     public FRM_MenuPrincipal() {
         initComponents();
-        setLocationRelativeTo(null);
         setResizable(false);
-        controlador_MenuPrincipal=new Controlador_MenuPrincipal();
+        setLocationRelativeTo(null);
+        estadoInicial();
+        controlador_MenuPrincipal=new Controlador_MenuPrincipal(this);
         jmi_Salir.addActionListener(controlador_MenuPrincipal);
         jmi_RegistroUsuarios.addActionListener(controlador_MenuPrincipal);
         jmi_Login.addActionListener(controlador_MenuPrincipal);        
     }
-
+    public void estadoInicial()
+    {
+        jmi_RegistroUsuarios.setEnabled(false);
+        jlNombreUsuario.setText("Usuario Autenticado: Sin Acceso");
+    }
+    public void habilitarOpciones()
+    {
+        jmi_RegistroUsuarios.setEnabled(true);
+    }
+    public void colocarNombreUsuario(String nombreUsuario)
+    {
+        jlNombreUsuario.setText("Usuario Autenticado: "+nombreUsuario);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +52,8 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlNombreUsuario = new javax.swing.JLabel();
+        jlFondo = new javax.swing.JLabel();
         jmb_BarraMenu = new javax.swing.JMenuBar();
         jm_Home = new javax.swing.JMenu();
         jmi_Login = new javax.swing.JMenuItem();
@@ -47,22 +62,35 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         jmi_RegistroUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jlNombreUsuario.setText("Usuario Autenticado: Sin Acceso");
+        getContentPane().add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 630, -1, -1));
+
+        jlFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/FONDO.png"))); // NOI18N
+        getContentPane().add(jlFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
 
         jm_Home.setText("Home");
+        jm_Home.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jmi_Login.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmi_Login.setText("Login");
+        jmi_Login.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jmi_Login.setText("Login / Cambiar Sesión");
         jm_Home.add(jmi_Login);
 
         jmi_Salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmi_Salir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jmi_Salir.setText("Salir");
         jm_Home.add(jmi_Salir);
 
         jmb_BarraMenu.add(jm_Home);
 
         jm_Registro.setText("Registro");
+        jm_Registro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jmi_RegistroUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmi_RegistroUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jmi_RegistroUsuarios.setText("Usuarios");
         jmi_RegistroUsuarios.setActionCommand("RegistroUsuarios");
         jm_Registro.add(jmi_RegistroUsuarios);
@@ -70,17 +98,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         jmb_BarraMenu.add(jm_Registro);
 
         setJMenuBar(jmb_BarraMenu);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 499, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -122,6 +139,8 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jlFondo;
+    private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JMenu jm_Home;
     private javax.swing.JMenu jm_Registro;
     private javax.swing.JMenuBar jmb_BarraMenu;

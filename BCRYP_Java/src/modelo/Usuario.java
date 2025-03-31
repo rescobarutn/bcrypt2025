@@ -10,22 +10,22 @@ package modelo;
  */
 public class Usuario {
     
-    private int id;
+    private int idUsuario;
     private String nombreUsuario;
-    private String contrasenia;
+    private String contraseniaUsuario;
 
-    public Usuario(int id, String nombreUsuario, String contrasenia) {
-        this.id = id;
+    public Usuario(int idUsuario, String nombreUsuario, String contraseniaUsuario) {
+        this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
-        this.contrasenia = contrasenia;
+        this.contraseniaUsuario = contraseniaUsuario;
     }
 
-    public int getId() {
-        return id;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombreUsuario() {
@@ -36,17 +36,14 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getContraseniaUsuario() {
+        return contraseniaUsuario;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContraseniaUsuario(String contraseniaUsuario) {
+        this.contraseniaUsuario = contraseniaUsuario;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + '}';
-    }  
+    
     
 }

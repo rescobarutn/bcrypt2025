@@ -22,18 +22,18 @@ public class FRM_Login extends javax.swing.JFrame {
     
     Controlador_Login controlador_Login;
     
-    public FRM_Login(ConexionBD conexion) {
+    public FRM_Login(ConexionBD conexion,FRM_MenuPrincipal frm_MenuPrincipal) {
         initComponents();
         setVisible(false);
         setResizable(false);
         setLocationRelativeTo(null);
         
-        controlador_Login=new Controlador_Login(this,conexion);
+        controlador_Login=new Controlador_Login(this,conexion,frm_MenuPrincipal);
         jb_Login.addActionListener(controlador_Login);
     }
     public Usuario getDatosLogin()
     {
-        return new Usuario(0,jt_Usuario.getText(),jpf_Contrasenia.getText());
+        return new Usuario(Integer.parseInt(jt_IDUsuario.getText()),"",jpf_Contrasenia.getText());
     }
     public void mostrarMensaje(String mensaje)
     {
@@ -41,7 +41,7 @@ public class FRM_Login extends javax.swing.JFrame {
     }
     public void estadoInicial()
     {
-        jt_Usuario.setText("");
+        jt_IDUsuario.setText("");
         jpf_Contrasenia.setText("");
     }
     /**
@@ -56,34 +56,42 @@ public class FRM_Login extends javax.swing.JFrame {
         jb_Login = new javax.swing.JButton();
         jl_Usuario = new javax.swing.JLabel();
         jl_Contrasenia = new javax.swing.JLabel();
-        jt_Usuario = new javax.swing.JTextField();
+        jt_IDUsuario = new javax.swing.JTextField();
         jpf_Contrasenia = new javax.swing.JPasswordField();
 
+        jb_Login.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jb_Login.setText("Login");
 
-        jl_Usuario.setText("Usuario:");
+        jl_Usuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jl_Usuario.setText("ID Usuario:");
 
+        jl_Contrasenia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jl_Contrasenia.setText("Contraseña:");
+
+        jt_IDUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jt_IDUsuario.setText("101110111");
+
+        jpf_Contrasenia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jpf_Contrasenia.setText("Seguridad2025.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jb_Login)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jl_Contrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(jl_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jl_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_Contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jpf_Contrasenia)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jb_Login)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(jt_IDUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpf_Contrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,14 +99,14 @@ public class FRM_Login extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_Usuario)
-                    .addComponent(jt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_IDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_Contrasenia)
                     .addComponent(jpf_Contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jb_Login)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,6 +121,6 @@ public class FRM_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jl_Contrasenia;
     private javax.swing.JLabel jl_Usuario;
     private javax.swing.JPasswordField jpf_Contrasenia;
-    private javax.swing.JTextField jt_Usuario;
+    private javax.swing.JTextField jt_IDUsuario;
     // End of variables declaration//GEN-END:variables
 }
